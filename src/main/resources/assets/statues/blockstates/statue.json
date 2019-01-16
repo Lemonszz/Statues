@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "main=false": { "model": "statues:empty" },
+    "main=true": { "model": "statues:empty" }
+  }
+}

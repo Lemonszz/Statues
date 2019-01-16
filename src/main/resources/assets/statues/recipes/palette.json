@@ -1,0 +1,30 @@
+
+{
+  "result": {
+    "item": "statues:palette",
+    "count": 1
+  },
+  "pattern": [
+    "GB",
+    "RW"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "G": {
+      "type": "forge:ore_dict",
+      "ore" : "dyeGreen"
+    },
+    "B": {
+      "type": "forge:ore_dict",
+      "ore" : "dyeBlue"
+    },
+    "R": {
+      "type": "forge:ore_dict",
+      "ore" : "dyeRed"
+    },
+    "W": {
+      "type": "forge:ore_dict",
+      "ore" : "plankWood"
+    }
+  }
+}

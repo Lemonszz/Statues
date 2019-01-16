@@ -1,0 +1,23 @@
+
+{
+  "result": {
+    "item": "statues:hammer",
+    "count": 1
+  },
+  "pattern": [
+    " I",
+    "IS",
+    " S"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore" : "ingotIron"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore" : "stickWood"
+    }
+  }
+}
