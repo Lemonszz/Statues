@@ -58,7 +58,7 @@ public class ImageStatueBufferDownload implements IImageBuffer
 			if(par1BufferedImage.getHeight() == 32)
 			{
 				copyArea(0, 16, 15, 32, 16, 48);
-				copyArea(40, 16, 55, 32, 32, 48);
+				copyArea(40, 16, 56, 32, 32, 48);
 			}
 
 			if(!block.getBlock().equals(Blocks.BEDROCK))

@@ -1,10 +1,8 @@
 package party.lemons.statues.block.entity;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -13,7 +11,6 @@ import net.minecraft.nbt.NBTUtil;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.Constants;
 import party.lemons.statues.statue.EntityStatuePlayer;
 import party.lemons.statues.statue.StatueInfo;
 
@@ -49,6 +46,12 @@ public class TileEntityStatue extends TileEntity
 	@Override
 	public void readFromNBT(NBTTagCompound compound)
 	{
+		if(compound == null)
+		{
+			getStatueEntity();
+			return;
+		}
+
 		super.readFromNBT(compound);
 		inventory.clear();
 

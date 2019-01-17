@@ -53,6 +53,7 @@ public class EntityStatuePlayer extends EntityPlayer
 		super(world, new GameProfile(UUID.fromString("a9cb469c-f43d-4925-946d-c85a90e58a15"), name));
 
 		this.setPosition(pos.getX(), pos.getY(), pos.getZ());
+		this.setDead();
 	}
 
 
