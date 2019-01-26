@@ -27,7 +27,7 @@ public class StatuesGuiHandler implements IGuiHandler
 			case SCUPLT:
 				return new DummyContainer();
 			case STATUE:
-				return new ContainerStatue(player.inventory, (TileEntityStatue) world.getTileEntity(new BlockPos(x, y, z)));
+				return new ContainerStatue(player, player.inventory, (TileEntityStatue) world.getTileEntity(new BlockPos(x, y, z)));
 		}
 
 		return null;
@@ -48,7 +48,7 @@ public class StatuesGuiHandler implements IGuiHandler
 
 				return new GuiSculpt(world,x,y,z,player,face);
 			case STATUE:
-				return new GuiStatue(player.inventory, (TileEntityStatue) world.getTileEntity(new BlockPos(x, y, z)), world, x, y, z);
+				return new GuiStatue(player, player.inventory, (TileEntityStatue) world.getTileEntity(new BlockPos(x, y, z)), world, x, y, z);
 		}
 
 		return null;

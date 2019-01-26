@@ -5,6 +5,7 @@ import com.mojang.authlib.minecraft.MinecraftProfileTexture;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.renderer.texture.AbstractTexture;
 import net.minecraft.client.renderer.texture.ITextureObject;
 import net.minecraft.client.renderer.texture.TextureManager;
@@ -20,11 +21,13 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.PlayerProfileCache;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySkull;
+import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StringUtils;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import party.lemons.statues.Statues;
@@ -36,7 +39,7 @@ import java.io.File;
 import java.util.Map;
 import java.util.UUID;
 
-public class EntityStatuePlayer extends EntityPlayer
+public class EntityStatuePlayer extends EntityBadIdea
 {
 	static ResourceLocation STEVE = new ResourceLocation("textures/entity/steve.png");
 	static ResourceLocation ALEX = new ResourceLocation("textures/entity/alex.png");
@@ -98,6 +101,18 @@ public class EntityStatuePlayer extends EntityPlayer
 		}
 	}
 
+	@Override
+	public void setItemStackToSlot(EntityEquipmentSlot slotIn, ItemStack stack)
+	{
+
+	}
+
+	@Override
+	public EnumHandSide getPrimaryHand()
+	{
+		return null;
+	}
+
 
 	public ItemStack getHeldItemMainhand()
 	{
@@ -118,6 +133,12 @@ public class EntityStatuePlayer extends EntityPlayer
 			return ((TileEntityStatue) statue).inventory.getStackInSlot(5);
 		}
 		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public Iterable<ItemStack> getArmorInventoryList()
+	{
+		return null;
 	}
 
 	public EntityStatuePlayer(World world)
@@ -191,17 +212,5 @@ public class EntityStatuePlayer extends EntityPlayer
 
 	public ResourceLocation getLocationSkin() {
 		return skin;
-	}
-
-	@Override
-	public boolean isSpectator()
-	{
-		return false;
-	}
-
-	@Override
-	public boolean isCreative()
-	{
-		return false;
 	}
 }

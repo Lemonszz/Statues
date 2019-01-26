@@ -20,7 +20,7 @@ public class ContainerStatue extends Container
 	private InventoryPlayer inventoryPlayer;
 	private TileEntityStatue statue;
 
-	public ContainerStatue(InventoryPlayer playerInventory, TileEntityStatue te)
+	public ContainerStatue(EntityPlayer player, InventoryPlayer playerInventory, TileEntityStatue te)
 	{
 		super();
 		this.inventoryPlayer = playerInventory;
@@ -31,10 +31,10 @@ public class ContainerStatue extends Container
 		for(int i = 0; i < slots.length; i++)
 		{
 			final EntityEquipmentSlot entityequipmentslot = slots[i];
-			addSlotToContainer(new SlotEquipment(te, entityequipmentslot, te.getStatueEntity(), te.inventory, entityequipmentslot.getIndex(), 80, 87 - i * 18));
+			addSlotToContainer(new SlotEquipment(te, entityequipmentslot, player, te.inventory, entityequipmentslot.getIndex(), 80, 87 - i * 18));
 		}
-		addSlotToContainer(new SlotEquipment(te, EntityEquipmentSlot.MAINHAND, te.getStatueEntity(), te.inventory, 4, 49, 51));
-		addSlotToContainer(new SlotEquipment(te, EntityEquipmentSlot.MAINHAND, te.getStatueEntity(), te.inventory, 5, 111, 51));
+		addSlotToContainer(new SlotEquipment(te, EntityEquipmentSlot.MAINHAND, player, te.inventory, 4, 49, 51));
+		addSlotToContainer(new SlotEquipment(te, EntityEquipmentSlot.MAINHAND, player, te.inventory, 5, 111, 51));
 
 		for(int i = 0; i < 3; ++i) {
 			for(int k = 0; k < 9; ++k) {
@@ -92,10 +92,10 @@ public class ContainerStatue extends Container
 	private static class SlotEquipment extends Slot
 	{
 		private EntityEquipmentSlot type;
-		private EntityStatuePlayer entity;
+		private EntityPlayer entity;
 		private TileEntityStatue te;
 
-		public SlotEquipment(TileEntityStatue te, EntityEquipmentSlot type, EntityStatuePlayer entity, IInventory inventoryIn, int index, int xPosition, int yPosition)
+		public SlotEquipment(TileEntityStatue te, EntityEquipmentSlot type, EntityPlayer entity, IInventory inventoryIn, int index, int xPosition, int yPosition)
 		{
 			super(inventoryIn, index, xPosition, yPosition);
 

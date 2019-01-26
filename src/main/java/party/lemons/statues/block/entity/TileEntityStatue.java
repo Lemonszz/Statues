@@ -11,12 +11,16 @@ import net.minecraft.nbt.NBTUtil;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import party.lemons.statues.statue.EntityBadIdea;
 import party.lemons.statues.statue.EntityStatuePlayer;
 import party.lemons.statues.statue.StatueInfo;
 
 public class TileEntityStatue extends TileEntity
 {
-	private EntityPlayer player;
+	@SideOnly(Side.CLIENT)
+	private EntityBadIdea player;
 	public String name = "";
 
 	public StatueInfo info = new StatueInfo();
@@ -26,6 +30,7 @@ public class TileEntityStatue extends TileEntity
 
 	public InventoryBasic inventory = new InventoryBasic("", false, 6);
 
+	@SideOnly(Side.CLIENT)
 	public EntityStatuePlayer getStatueEntity()
 	{
 		if(player == null)
@@ -34,8 +39,7 @@ public class TileEntityStatue extends TileEntity
 			player.ticksExisted = 10;
 			player.info = info;
 
-			if(world.isRemote)
-				player.applySkin(name, state, facing);
+			player.applySkin(name, state, facing);
 
 			this.player = player;
 		}
@@ -93,6 +97,7 @@ public class TileEntityStatue extends TileEntity
 		return super.writeToNBT(compound);
 	}
 
+	@SideOnly(Side.CLIENT)
 	public void updateModel()
 	{
 		if(player != null && world != null && world.isRemote)

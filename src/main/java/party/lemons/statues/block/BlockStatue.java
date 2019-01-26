@@ -16,6 +16,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -36,6 +37,8 @@ import java.util.Random;
 public class BlockStatue extends BlockContainer
 {
 	public static final PropertyBool MAIN_PART = PropertyBool.create("main");
+	public static final AxisAlignedBB BB_BOTTOM = new AxisAlignedBB(0, 0, 0, 1, 2, 1);
+	public static final AxisAlignedBB BB_TOP = new AxisAlignedBB(0, -1, 0, 1, 1, 1);
 
 	public BlockStatue()
 	{
@@ -120,6 +123,12 @@ public class BlockStatue extends BlockContainer
 		}
 
 		super.breakBlock(worldIn, pos, state);
+	}
+
+	@Override
+	public AxisAlignedBB getSelectedBoundingBox(IBlockState state, World worldIn, BlockPos pos)
+	{
+		return state.getValue(MAIN_PART) ? BB_BOTTOM.offset(pos) : BB_TOP.offset(pos);
 	}
 
 	public IBlockState getStateFromMeta(int meta)

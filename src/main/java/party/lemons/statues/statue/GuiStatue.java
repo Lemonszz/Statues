@@ -1,5 +1,6 @@
 package party.lemons.statues.statue;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.world.World;
 import party.lemons.statues.block.entity.ContainerStatue;
@@ -13,8 +14,8 @@ public class GuiStatue extends GuiScreenPlus
 	int wx,wy,wz;
 	float ila,ira;
 
-	public GuiStatue(InventoryPlayer inv, final TileEntityStatue te, World par2, int x, int y, int z) {
-		super(new ContainerStatue(inv, te),176,226,"statues:textures/gui-statue.png");
+	public GuiStatue(EntityPlayer player, InventoryPlayer inv, final TileEntityStatue te, World par2, int x, int y, int z) {
+		super(new ContainerStatue(player, inv, te),176,226,"statues:textures/gui-statue.png");
 		invg = inv;
 		tile = te;
 		wx=x; wy=y; wz=z;
